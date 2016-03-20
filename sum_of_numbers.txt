@@ -1,0 +1,50 @@
+Chapter 10 Programming Exercise 3. Sum of Numbers
+Assume that a file containing a series of integers is named numbers.dat
+    and exists on the computer’s disk. Design a program that reads all
+    of the numbers stored in the file and calculates their total.
+
+Pseudocode
+----------
+Module main()
+    // Local variables
+    Declare String fileName = 'numbers.dat'
+    Declare List nums = []
+    Declare Integer numSum = 0
+
+    // Display intro to user.
+    Call fluffy_intro()
+
+    // Assign the integer contents of the file to the nums array.
+    Call get_file_contents(fileName, nums)
+
+    // Store the sum of the nums array in the numSum variable.
+    Set numSum = sum(nums)
+
+    // Display the results to the user.
+    Call display_results(fileName, numSum)
+End Module
+
+
+Module fluffy_intro()
+    Display 'Welcome to the Sum of Numbers program.'
+    Display 'This program opens the numbers.dat file and displays'
+    Display 'the sum of the integers read from the file.'
+End Module
+
+
+// This module accepts the filename and an array by reference as parameters.
+//    It opens the file and converts each line into an integer and stores
+//    it in the array.
+Module get_file_contents(String fName, Integer Ref n)
+    Declare InputFile fObject
+    With Open(fName, 'r') As fObject Do
+        n.append(int(fObject.read))
+    Close fObject
+End Modole
+
+
+// Displays the summation results to the user.
+Module display_results(String fileName, Integer numSum)
+    Display 'The sum of all the integers in the', fileName, ' file is: ', \
+            numSum, '.'
+End Module
