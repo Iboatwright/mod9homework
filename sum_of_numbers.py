@@ -3,7 +3,8 @@
 # Name of program: Sum of Numbers
 # Description of program: This program opens a file named numbers.dat
 #   that contains a list of integers and calculates the sum of all the
-#   integers.
+#   integers.  The numbers.dat file is assumed to be a string of positive
+#   integers separated by \n.
 #
 # Ivan Boatwright
 # March 19, 2016
@@ -37,17 +38,19 @@ def fluffy_intro():
 
 
 # This module accepts the filename and an array by reference as parameters.
-#   It opens the file and converts each line into an integer and stores
-#   it in the array.
+#   It opens the file, splits the string of integers by the '\n' delimiter,
+#   converts each string into an integer and stores them in the nums list.
 def get_file_contents(fName, nums):
     with open(fName,'r') as f:
-        nums.append(int(f.read()))
+        nums.extend([int(x) for x in f.read().split('\n')[:-1]])
     return None
+
 
 # Displays the summation results to the user.
 def display_results(fName, numSum):
-    print('The sum of all the integers in the {} file is: {}'.format(
-                                                            fName, numSum))
+    sep = '\n\n{}\n\n'.format('-'*79)
+    print('{0}The sum of all the integers in the {1} file is: {2:>23} {0}'
+          ''.format(sep, fName, numSum))
     return None
 
 
