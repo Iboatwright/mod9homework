@@ -42,7 +42,6 @@ def fluffy_intro():
 def get_file_contents(fName, nums):
     with open(fName,'r') as f:
         nums.append(int(f.read()))
-    f.close()
     return None
 
 # Displays the summation results to the user.
@@ -51,12 +50,6 @@ def display_results(fName, numSum):
                                                             fName, numSum))
     return None
 
-
-###  temp functions for creating numbers.dat file  ###
-# Returns a list of random ints. p is basically any formatting. r is the set the
-#   random numbers are pulled from. l is how many elements to generate.
-def rin(p='{}\n',r=(1,25),l=12):
-    return [p.format(x) for x in [(int(x) * (random.random()+1.0)) for x in random.sample(range(*r),l)]]
 
 # Call the main program.
 main()
